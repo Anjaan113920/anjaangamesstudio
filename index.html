@@ -1,113 +1,423 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Kandiala Games</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anjaan Games Studio</title>
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0f0f0f;
-      color: white;
-      text-align: center;
+    :root{
+      --bg:#0f0f0f; --card:#1b1b1b; --muted:#a8a8a8; --text:#ffffff;
+      --accent:#7c3aed; --accent2:#2563eb; --border:rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: Arial, sans-serif; background:var(--bg); color:var(--text);
     }
 
-    .hero {
-      padding: 80px 20px;
+    .nav{
+      position: sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(15,15,15,.75);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      max-width:1050px; margin:0 auto; padding:12px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700;}
+    .brand img{width:34px; height:34px; border-radius:10px; border:1px solid var(--border)}
+    .links a{
+      color:var(--muted); text-decoration:none; margin-left:14px; font-size:14px;
+    }
+    .links a:hover{color:var(--text)}
+
+    .container{max-width:1050px; margin:0 auto; padding:30px 18px;}
+
+    .hero{
+      padding:52px 0 20px;
+      text-align:center;
+    }
+    .hero h1{font-size:48px; margin:0 0 10px;}
+    .hero p{color:var(--muted); margin:0 auto; max-width:720px; line-height:1.5;}
+
+    .cta{
+      margin-top:18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
     }
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+    .btn{
+      display:inline-block; padding:12px 18px; border-radius:10px;
+      text-decoration:none; color:white; font-weight:600; font-size:14px;
+      border:1px solid var(--border);
+    }
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2)); border:none;}
+    .btn-ghost{background:rgba(255,255,255,.06);}
+    .small{padding:10px 14px; border-radius:10px; font-weight:600; font-size:13px;}
+    .download{background:#22c55e; border:none;}
+
+    .stats{
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .stat{
+      background:rgba(255,255,255,0.05);
+      border:1px solid var(--border);
+      padding:10px 16px;
+      border-radius:12px;
+      text-align:center;
+      min-width:120px;
+    }
+    .stat strong{
+      font-size:20px;
+      display:block;
+      margin-bottom:2px;
+    }
+    .stat span{
+      font-size:12px;
+      color:var(--muted);
     }
 
-    .hero p {
-      color: #aaa;
-      font-size: 18px;
+    .section-title{
+      margin:38px 0 14px; font-size:22px;
+      display:flex; align-items:center; justify-content:space-between;
     }
 
-    .games {
-      padding: 40px 20px;
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap:16px;
     }
 
-    .game-card {
-      background: #1c1c1c;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 400px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+      box-shadow: 0 0 18px rgba(0,0,0,.35);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
+    .card-top{display:flex; gap:12px; align-items:center;}
+    .icon{
+      width:64px; height:64px; border-radius:16px; border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      display:flex; align-items:center; justify-content:center; overflow:hidden;
+      flex:0 0 auto;
+    }
+    .icon img{width:100%; height:100%; object-fit:cover;}
+    .meta h3{margin:0; font-size:18px;}
+    .meta span{color:var(--muted); font-size:13px;}
+    .desc{color:var(--muted); line-height:1.45; margin:0;}
+    ul.features{margin:0; padding-left:18px; color:var(--muted); line-height:1.5;}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto;}
 
-    .game-card h2 {
-      margin-bottom: 15px;
+    .footer{
+      border-top:1px solid var(--border);
+      margin-top:50px; padding:18px; color:var(--muted); text-align:center; font-size:13px;
     }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 5px;
-      background-color: #007aff;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    .btn:hover {
-      background-color: #005ecb;
-    }
-
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      color: #777;
-      font-size: 14px;
-    }
+    .note{color:var(--muted); font-size:13px; margin-top:10px;}
   </style>
 </head>
 
 <body>
 
-  <div class="hero">
-    <h1>Kandiala Games</h1>
-    <p>Indie Mobile Game Studio</p>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Studio Logo">
+        <div>Anjaan Games Studio</div>
+      </div>
+      <div class="links">
+        <a href="#games">Games</a>
+        <a href="#about">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+      </div>
+    </div>
   </div>
 
-  <div class="games">
+  <div class="container">
 
-    <div class="game-card">
-      <h2>Verify</h2>
-      <a class="btn" href="app-ads.txt">Google Admob</a>
+    <!-- HERO -->
+    <div class="hero">
+      <h1>ANJAAN GAMES STUDIO</h1>
 
-    <div class="game-card">
-      <h2>Tic Tac Toe Glow Grid</h2>
-      <a class="btn" href="privacy.html">Privacy Policy</a>
-      <a class="btn" href="support.html">Support</a>
+      <p>
+        Fast, focused, addictive mobile games — built solo with love.
+        Explore our iOS titles and download directly from the App Store.
+      </p>
+
+      <div class="stats">
+        <div class="stat"><strong>6</strong><span>Live Games</span></div>
+        <div class="stat"><strong>1</strong><span>In Review</span></div>
+        <div class="stat"><strong>iOS</strong><span>Platform</span></div>
+      </div>
+
+      <!-- Official Website Card -->
+      <div class="card" style="max-width:720px; margin:18px auto 0; text-align:left;">
+        <div class="card-top">
+          <div class="icon"><img src="assets/logo.png" alt="Anjaan Games Studio"></div>
+          <div class="meta">
+            <h3>Official Website</h3>
+            <span>Studio info & updates</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          Visit our official developer website for full studio information and games.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary small" href="https://anjaangamesstudio.framer.website/" target="_blank" rel="noopener">
+            Visit Official Studio Website →
+          </a>
+          <a class="btn btn-ghost small" href="https://apps.apple.com/us/developer/amit-kandial/id1858479815" target="_blank" rel="noopener">
+            View on App Store →
+          </a>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="#games">Explore Our Games</a>
+        <a class="btn btn-ghost" href="https://apps.apple.com/us/developer/amit-kandial/id1858479815" target="_blank" rel="noopener">
+          View All Games on App Store →
+        </a>
+      </div>
+
+      <div class="note">
+        AdMob verification: <a class="btn btn-ghost small" href="app-ads.txt">app-ads.txt</a>
+      </div>
     </div>
 
-    <div class="game-card">
-      <h2>Quick Match Arena</h2>
-      <a class="btn" href="quick-match-arena-privacy.html">Privacy Policy</a>
-      <a class="btn" href="quick-match-arena-support.html">Support</a>
+    <!-- GAMES -->
+    <div id="games" class="section-title">
+      <div>Our Games</div>
     </div>
 
-    <div class="game-card">
-      <h2>Last Path</h2>
-      <a class="btn" href="privacy-policy.html">Privacy Policy</a>
-      <a class="btn" href="support.html">Support</a>
+    <div class="grid">
+
+      <!-- 1) Chidiya Udh (In Review) -->
+      <div class="card" id="chidiyaudh">
+        <div class="card-top">
+          <div class="icon"><img src="assets/chidiya.png" alt="Chidiya Udh"></div>
+          <div class="meta">
+            <h3>Chidiya Udh</h3>
+            <span>Party game • In Review</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          A fast-paced multiplayer party game inspired by the classic “Chidiya Udh”.
+          Listen to voice commands and react instantly.
+        </p>
+
+        <ul class="features">
+          <li>1–6 local multiplayer players</li>
+          <li>Voice-based reaction challenge</li>
+          <li>Simple one-touch controls</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn small btn-ghost" style="pointer-events:none; opacity:.85;">In App Store Review</a>
+        </div>
+      </div>
+
+      <!-- 2) Spiral Clash -->
+      <div class="card" id="spiralclash">
+        <div class="card-top">
+          <div class="icon"><img src="assets/spiralclash.png" alt="Spiral Clash"></div>
+          <div class="meta">
+            <h3>Spiral Clash</h3>
+            <span>Board game • Strategy</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          A modern strategy dice board game built for competitive fun. Roll, move strategically,
+          capture opponents, and race to victory.
+        </p>
+
+        <ul class="features">
+          <li>Strategic capture mechanics</li>
+          <li>2–4 player modes + solo AI</li>
+          <li>Clean, colorful board design</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn small download" href="https://apps.apple.com/us/app/spiral-clash/id6759514823" target="_blank" rel="noopener">Download</a>
+        </div>
+      </div>
+
+      <!-- 3) Tile Royale -->
+      <div class="card" id="tileroyale">
+        <div class="card-top">
+          <div class="icon"><img src="assets/tileroyale.png" alt="Tile Royale"></div>
+          <div class="meta">
+            <h3>Tile Royale</h3>
+            <span>Board game • Strategy</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          Turn-based dice strategy where smart decisions matter more than luck.
+          Choose three numbers before rolling — match to continue, miss and your turn ends.
+        </p>
+
+        <ul class="features">
+          <li>Unique dice number selection mechanic</li>
+          <li>Safe tiles and capture rules</li>
+          <li>Quick and fun matches</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn small download" href="https://apps.apple.com/us/app/tile-royale/id6758527056" target="_blank" rel="noopener">Download</a>
+        </div>
+      </div>
+
+      <!-- 4) Reflex Drop -->
+      <div class="card" id="reflexdrop">
+        <div class="card-top">
+          <div class="icon"><img src="assets/reflexdrop.png" alt="Reflex Drop"></div>
+          <div class="meta">
+            <h3>Reflex Drop</h3>
+            <span>Arcade • Reflex</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          Fast-paced arcade reflex game designed to test your focus and reaction speed.
+          Catch the right ones, dodge the wrong ones, survive as long as possible.
+        </p>
+
+        <ul class="features">
+          <li>Clean and minimal design</li>
+          <li>Increasing difficulty challenge</li>
+          <li>Global leaderboard competition</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn small download" href="https://apps.apple.com/us/app/reflex-drop/id6758880543" target="_blank" rel="noopener">Download</a>
+          <a class="btn small btn-ghost" href="Reflexdrop_Privacy.html">Privacy</a>
+          <a class="btn small btn-ghost" href="ReflexDrop_Support.html">Support</a>
+        </div>
+      </div>
+
+      <!-- 5) PathLock Escape -->
+      <div class="card" id="pathlock">
+        <div class="card-top">
+          <div class="icon"><img src="assets/pathlock.png" alt="PathLock Escape"></div>
+          <div class="meta">
+            <h3>PathLock Escape</h3>
+            <span>Puzzle • Logic</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          A fast-paced logic puzzle that challenges your brain and focus.
+          Connect the full path from start to end before the timer runs out.
+        </p>
+
+        <ul class="features">
+          <li>Procedural levels + smart hint system</li>
+          <li>Increasing difficulty progression</li>
+          <li>Score-based challenge</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn small download" href="https://apps.apple.com/us/app/pathlock-escape/id6759783064" target="_blank" rel="noopener">Download</a>
+          <a class="btn small btn-ghost" href="privacy-policy.html">Privacy</a>
+          <a class="btn small btn-ghost" href="support.html">Support</a>
+        </div>
+      </div>
+
+      <!-- 6) Quick Match Arena -->
+      <div class="card" id="quickmatch">
+        <div class="card-top">
+          <div class="icon"><img src="assets/quickmatch.png" alt="Quick Match Arena"></div>
+          <div class="meta">
+            <h3>Quick Match Arena</h3>
+            <span>Puzzle • Match Challenges</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          Fast-paced puzzle challenges to sharpen your mind.
+          Match colors, letters, animals, and patterns across quick rounds.
+        </p>
+
+        <ul class="features">
+          <li>Color, alphabet, and pattern challenges</li>
+          <li>Improves focus, memory, and quick thinking</li>
+          <li>Suitable for kids and adults</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn small download" href="https://apps.apple.com/us/app/quick-match-arena/id6757015003" target="_blank" rel="noopener">Download</a>
+          <a class="btn small btn-ghost" href="quick-match-arena-privacy.html">Privacy</a>
+          <a class="btn small btn-ghost" href="quick-match-arena-support.html">Support</a>
+        </div>
+      </div>
+
+      <!-- 7) Tic Tac Toe Glow Grid -->
+      <div class="card" id="tictactoe">
+        <div class="card-top">
+          <div class="icon"><img src="assets/tictactoe.png" alt="Tic Tac Toe Glow Grid"></div>
+          <div class="meta">
+            <h3>Tic Tac Toe Glow Grid</h3>
+            <span>Classic strategy • Neon style</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          Experience classic Tic Tac Toe with a modern neon glow design.
+          Easy to play, fast, and perfect for all ages.
+        </p>
+
+        <ul class="features">
+          <li>Play vs friends or built-in AI</li>
+          <li>Modern glowing visual design</li>
+          <li>Quick restart + smooth gameplay</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn small download" href="https://apps.apple.com/us/app/tic-tac-toe-glow-grid/id6756093765" target="_blank" rel="noopener">Download</a>
+          <a class="btn small btn-ghost" href="privacy.html">Privacy</a>
+          <a class="btn small btn-ghost" href="support.html">Support</a>
+        </div>
+      </div>
+
     </div>
 
-    <div class="game-card">
-      <h2>Reflex Drop</h2>
-      <a class="btn" href="Reflexdrop_Privacy.html">Privacy Policy</a>
-      <a class="btn" href="ReflexDrop_Support.html">Support</a>
+    <!-- ABOUT -->
+    <div id="about" class="section-title">
+      <div>About</div>
     </div>
+
+    <div class="card">
+      <p class="desc" style="margin:0;">
+        Anjaan Games Studio is an indie mobile studio focused on fast, clean, replayable games.
+        Built solo in Unity, shipping iteratively with frequent updates.
+      </p>
+      <div class="actions" style="margin-top:12px;">
+        <a class="btn small btn-ghost" href="support.html">Contact / Support</a>
+        <a class="btn small btn-ghost" href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      © 2026 Anjaan Games Studio. All rights reserved.
+      <br><br>
+      Official Developer Website:
+      <a href="https://anjaangamesstudio.framer.website/" target="_blank" rel="noopener" style="color:#ffffff;">
+        anjaangamesstudio.framer.website
+      </a>
+    </footer>
 
   </div>
-
-  <footer>
-    © 2026 Kandiala Games. All rights reserved.
-  </footer>
-
 </body>
 </html>
