@@ -7,87 +7,188 @@
 
   <style>
     :root{
-      --bg:#0f0f0f; --card:#1b1b1b; --muted:#a8a8a8; --text:#ffffff;
-      --accent:#7c3aed; --accent2:#2563eb; --border:rgba(255,255,255,.08);
+      --bg:#0f0f0f;
+      --card:#1b1b1b;
+      --muted:#a8a8a8;
+      --text:#ffffff;
+      --accent:#7c3aed;
+      --accent2:#2563eb;
+      --border:rgba(255,255,255,.08);
+      --green:#22c55e;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
     body{
-      margin:0; font-family: Arial, sans-serif; background:var(--bg); color:var(--text);
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
     }
 
     .nav{
-      position: sticky; top:0; z-index:10;
-      backdrop-filter: blur(10px);
-      background: rgba(15,15,15,.75);
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(10px);
+      background:rgba(15,15,15,.78);
       border-bottom:1px solid var(--border);
     }
-    .nav-inner{
-      max-width:1050px; margin:0 auto; padding:12px 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-    }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700;}
-    .brand img{width:34px; height:34px; border-radius:10px; border:1px solid var(--border)}
-    .links a{
-      color:var(--muted); text-decoration:none; margin-left:14px; font-size:14px;
-    }
-    .links a:hover{color:var(--text)}
 
-    .container{max-width:1050px; margin:0 auto; padding:30px 18px;}
+    .nav-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding:12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      font-size:16px;
+    }
+
+    .brand img{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      object-fit:cover;
+    }
+
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .links a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    .links a:hover{
+      color:var(--text);
+    }
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:30px 18px 50px;
+    }
 
     .hero{
-      padding:52px 0 20px;
+      padding:52px 0 24px;
       text-align:center;
     }
-    .hero h1{font-size:48px; margin:0 0 10px;}
-    .hero p{color:var(--muted); margin:0 auto; max-width:720px; line-height:1.5;}
+
+    .hero h1{
+      font-size:48px;
+      margin:0 0 12px;
+      line-height:1.1;
+    }
+
+    .hero p{
+      color:var(--muted);
+      margin:0 auto;
+      max-width:760px;
+      line-height:1.6;
+      font-size:16px;
+    }
 
     .cta{
-      margin-top:18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+      margin-top:20px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
     }
 
     .btn{
-      display:inline-block; padding:12px 18px; border-radius:10px;
-      text-decoration:none; color:white; font-weight:600; font-size:14px;
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:10px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:600;
+      font-size:14px;
       border:1px solid var(--border);
+      transition:.2s ease;
     }
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2)); border:none;}
-    .btn-ghost{background:rgba(255,255,255,.06);}
-    .small{padding:10px 14px; border-radius:10px; font-weight:600; font-size:13px;}
-    .download{background:#22c55e; border:none;}
+
+    .btn:hover{
+      transform:translateY(-1px);
+      opacity:.96;
+    }
+
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      border:none;
+    }
+
+    .btn-ghost{
+      background:rgba(255,255,255,.06);
+    }
+
+    .small{
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      font-size:13px;
+    }
+
+    .download{
+      background:var(--green);
+      border:none;
+    }
 
     .stats{
       display:flex;
       justify-content:center;
       gap:18px;
-      margin-top:18px;
+      margin-top:20px;
       flex-wrap:wrap;
     }
+
     .stat{
-      background:rgba(255,255,255,0.05);
+      background:rgba(255,255,255,.05);
       border:1px solid var(--border);
-      padding:10px 16px;
+      padding:12px 16px;
       border-radius:12px;
       text-align:center;
-      min-width:120px;
+      min-width:130px;
     }
+
     .stat strong{
       font-size:20px;
       display:block;
       margin-bottom:2px;
     }
+
     .stat span{
       font-size:12px;
       color:var(--muted);
     }
 
     .section-title{
-      margin:38px 0 14px; font-size:22px;
-      display:flex; align-items:center; justify-content:space-between;
+      margin:42px 0 16px;
+      font-size:22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
     }
 
     .grid{
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:16px;
     }
 
@@ -96,30 +197,112 @@
       border:1px solid var(--border);
       border-radius:16px;
       padding:16px;
-      box-shadow: 0 0 18px rgba(0,0,0,.35);
+      box-shadow:0 0 18px rgba(0,0,0,.35);
       display:flex;
       flex-direction:column;
       gap:12px;
+      height:100%;
     }
-    .card-top{display:flex; gap:12px; align-items:center;}
+
+    .card-top{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
     .icon{
-      width:64px; height:64px; border-radius:16px; border:1px solid var(--border);
+      width:64px;
+      height:64px;
+      border-radius:16px;
+      border:1px solid var(--border);
       background:rgba(255,255,255,.05);
-      display:flex; align-items:center; justify-content:center; overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
       flex:0 0 auto;
     }
-    .icon img{width:100%; height:100%; object-fit:cover;}
-    .meta h3{margin:0; font-size:18px;}
-    .meta span{color:var(--muted); font-size:13px;}
-    .desc{color:var(--muted); line-height:1.45; margin:0;}
-    ul.features{margin:0; padding-left:18px; color:var(--muted); line-height:1.5;}
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto;}
+
+    .icon img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .meta h3{
+      margin:0;
+      font-size:18px;
+    }
+
+    .meta span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .desc{
+      color:var(--muted);
+      line-height:1.5;
+      margin:0;
+      font-size:14px;
+    }
+
+    ul.features{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:auto;
+    }
+
+    .highlight{
+      background:linear-gradient(180deg, rgba(124,58,237,.10), rgba(37,99,235,.06));
+    }
 
     .footer{
       border-top:1px solid var(--border);
-      margin-top:50px; padding:18px; color:var(--muted); text-align:center; font-size:13px;
+      margin-top:56px;
+      padding:24px 18px 10px;
+      color:var(--muted);
+      text-align:center;
+      font-size:13px;
     }
-    .note{color:var(--muted); font-size:13px; margin-top:10px;}
+
+    .note{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:12px;
+    }
+
+    .footer a,
+    .note a{
+      color:#fff;
+      text-decoration:none;
+    }
+
+    @media (max-width:700px){
+      .hero h1{
+        font-size:34px;
+      }
+
+      .hero p{
+        font-size:15px;
+      }
+
+      .nav-inner{
+        justify-content:center;
+      }
+
+      .links{
+        justify-content:center;
+      }
+    }
   </style>
 </head>
 
@@ -132,11 +315,12 @@
         <img src="assets/logo.png" alt="Studio Logo">
         <div>Anjaan Games Studio</div>
       </div>
+
       <div class="links">
         <a href="#games">Games</a>
         <a href="#about">About</a>
-        <a href="privacy.html">privacy</a>
-        <a href="support.html">support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
       </div>
     </div>
   </div>
@@ -148,30 +332,33 @@
       <h1>ANJAAN GAMES STUDIO</h1>
 
       <p>
-
         Anjaan Games Studio is an indie mobile game studio founded by Amit Kandial,
-        focused on building fast, addictive strategy and puzzle games for iOS — built solo with love.
-        Explore our iOS titles and download directly from the App Store.
+        focused on building fast, addictive arcade, strategy, and puzzle games for iOS.
+        From classic-inspired party games to quick reflex and board game experiences,
+        every title is built solo with passion and regular updates.
       </p>
 
       <div class="stats">
-        <div class="stat"><strong>6</strong><span>Live Games</span></div>
+        <div class="stat"><strong>8</strong><span>Live Games</span></div>
         <div class="stat"><strong>1</strong><span>In Review</span></div>
         <div class="stat"><strong>iOS</strong><span>Platform</span></div>
       </div>
 
       <!-- Official Website Card -->
-      <div class="card" style="max-width:720px; margin:18px auto 0; text-align:left;">
+      <div class="card" style="max-width:740px; margin:20px auto 0; text-align:left;">
         <div class="card-top">
-          <div class="icon"><img src="assets/logo.png" alt="Anjaan Games Studio"></div>
+          <div class="icon">
+            <img src="assets/logo.png" alt="Anjaan Games Studio">
+          </div>
           <div class="meta">
             <h3>Official Website</h3>
-            <span>Studio info & updates</span>
+            <span>Studio info, support & App Store access</span>
           </div>
         </div>
 
         <p class="desc">
-          Visit our official developer website for full studio information and games.
+          Visit our official studio page to explore all live games, latest releases,
+          support pages, and developer information.
         </p>
 
         <div class="actions">
@@ -192,7 +379,8 @@
       </div>
 
       <div class="note">
-        AdMob verification: <a class="btn btn-ghost small" href="app-ads.txt">app-ads.txt</a>
+        AdMob verification:
+        <a class="btn btn-ghost small" href="app-ads.txt">app-ads.txt</a>
       </div>
     </div>
 
@@ -203,10 +391,12 @@
 
     <div class="grid">
 
-      <!-- 1) Chidiya Udh (In Review) -->
+      <!-- Chidiya Udh -->
       <div class="card" id="chidiyaudh">
         <div class="card-top">
-          <div class="icon"><img src="assets/chidiya.png" alt="Chidiya Udh"></div>
+          <div class="icon">
+            <img src="assets/chidiya.png" alt="Chidiya Udh">
+          </div>
           <div class="meta">
             <h3>Chidiya Udh</h3>
             <span>Party game • In Review</span>
@@ -229,10 +419,68 @@
         </div>
       </div>
 
-      <!-- 2) Spiral Clash -->
+      <!-- Arcade -->
+      <div class="card highlight" id="arcade">
+        <div class="card-top">
+          <div class="icon">
+            <img src="assets/arcade.png" alt="Anjaan Games Arcade">
+          </div>
+          <div class="meta">
+            <h3>Anjaan Games Arcade</h3>
+            <span>Arcade collection • Multi-game</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          A multi-game arcade app featuring quick-play party and casual experiences in one place.
+          Enjoy traditional-inspired games, quick utility modes, and fun family gameplay in a single app.
+        </p>
+
+        <ul class="features">
+          <li>Includes Chidiya Udh, Raja Mantri, and Find Ball</li>
+          <li>Also includes Roll Dice and Toss</li>
+          <li>Fast mini-games in one arcade collection</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn small download" href="https://apps.apple.com/us/app/anjaan-games-arcade/id6759535024" target="_blank" rel="noopener">Download</a>
+        </div>
+      </div>
+
+      <!-- Magnet Duel -->
+      <div class="card" id="magnetduel">
+        <div class="card-top">
+          <div class="icon">
+            <img src="assets/magnetduel.png" alt="Magnet Duel">
+          </div>
+          <div class="meta">
+            <h3>Magnet Duel</h3>
+            <span>Board game • Strategy duel</span>
+          </div>
+        </div>
+
+        <p class="desc">
+          A competitive strategy game where players place magnets carefully and try to avoid magnetic pulls,
+          collisions, and costly mistakes.
+        </p>
+
+        <ul class="features">
+          <li>Physics-based magnetic gameplay</li>
+          <li>Strategic turn-by-turn duels</li>
+          <li>Simple rules with tense outcomes</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn small download" href="https://apps.apple.com/us/app/magnet-duel/id6761226073" target="_blank" rel="noopener">Download</a>
+        </div>
+      </div>
+
+      <!-- Spiral Clash -->
       <div class="card" id="spiralclash">
         <div class="card-top">
-          <div class="icon"><img src="assets/spiralclash.png" alt="Spiral Clash"></div>
+          <div class="icon">
+            <img src="assets/spiralclash.png" alt="Spiral Clash">
+          </div>
           <div class="meta">
             <h3>Spiral Clash</h3>
             <span>Board game • Strategy</span>
@@ -240,8 +488,8 @@
         </div>
 
         <p class="desc">
-          A modern strategy dice board game built for competitive fun. Roll, move strategically,
-          capture opponents, and race to victory.
+          A modern strategy dice board game built for competitive fun.
+          Roll, move strategically, capture opponents, and race to victory.
         </p>
 
         <ul class="features">
@@ -255,10 +503,12 @@
         </div>
       </div>
 
-      <!-- 3) Tile Royale -->
+      <!-- Tile Royale -->
       <div class="card" id="tileroyale">
         <div class="card-top">
-          <div class="icon"><img src="assets/tileroyale.png" alt="Tile Royale"></div>
+          <div class="icon">
+            <img src="assets/tileroyale.png" alt="Tile Royale">
+          </div>
           <div class="meta">
             <h3>Tile Royale</h3>
             <span>Board game • Strategy</span>
@@ -281,10 +531,12 @@
         </div>
       </div>
 
-      <!-- 4) Reflex Drop -->
+      <!-- Reflex Drop -->
       <div class="card" id="reflexdrop">
         <div class="card-top">
-          <div class="icon"><img src="assets/reflexdrop.png" alt="Reflex Drop"></div>
+          <div class="icon">
+            <img src="assets/reflexdrop.png" alt="Reflex Drop">
+          </div>
           <div class="meta">
             <h3>Reflex Drop</h3>
             <span>Arcade • Reflex</span>
@@ -293,7 +545,7 @@
 
         <p class="desc">
           Fast-paced arcade reflex game designed to test your focus and reaction speed.
-          Catch the right ones, dodge the wrong ones, survive as long as possible.
+          Catch the right ones, dodge the wrong ones, and survive as long as possible.
         </p>
 
         <ul class="features">
@@ -309,10 +561,12 @@
         </div>
       </div>
 
-      <!-- 5) PathLock Escape -->
+      <!-- PathLock Escape -->
       <div class="card" id="pathlock">
         <div class="card-top">
-          <div class="icon"><img src="assets/pathlock.png" alt="PathLock Escape"></div>
+          <div class="icon">
+            <img src="assets/pathlock.png" alt="PathLock Escape">
+          </div>
           <div class="meta">
             <h3>PathLock Escape</h3>
             <span>Puzzle • Logic</span>
@@ -337,10 +591,12 @@
         </div>
       </div>
 
-      <!-- 6) Quick Match Arena -->
+      <!-- Quick Match Arena -->
       <div class="card" id="quickmatch">
         <div class="card-top">
-          <div class="icon"><img src="assets/quickmatch.png" alt="Quick Match Arena"></div>
+          <div class="icon">
+            <img src="assets/quickmatch.png" alt="Quick Match Arena">
+          </div>
           <div class="meta">
             <h3>Quick Match Arena</h3>
             <span>Puzzle • Match Challenges</span>
@@ -365,10 +621,12 @@
         </div>
       </div>
 
-      <!-- 7) Tic Tac Toe Glow Grid -->
+      <!-- Tic Tac Toe Glow Grid -->
       <div class="card" id="tictactoe">
         <div class="card-top">
-          <div class="icon"><img src="assets/tictactoe.png" alt="Tic Tac Toe Glow Grid"></div>
+          <div class="icon">
+            <img src="assets/tictactoe.png" alt="Tic Tac Toe Glow Grid">
+          </div>
           <div class="meta">
             <h3>Tic Tac Toe Glow Grid</h3>
             <span>Classic strategy • Neon style</span>
@@ -402,9 +660,11 @@
 
     <div class="card">
       <p class="desc" style="margin:0;">
-        Anjaan Games Studio is an indie mobile studio focused on fast, clean, replayable games.
-        Built solo in Unity, shipping iteratively with frequent updates.
+        Anjaan Games Studio is an indie mobile game studio focused on fast, clean, replayable mobile games.
+        Built solo in Unity, the studio creates arcade, board, reflex, and puzzle experiences with frequent updates,
+        simple controls, and accessible gameplay for all ages.
       </p>
+
       <div class="actions" style="margin-top:12px;">
         <a class="btn small btn-ghost" href="support.html">Contact / Support</a>
         <a class="btn small btn-ghost" href="privacy.html">Privacy Policy</a>
@@ -415,7 +675,7 @@
       © 2026 Anjaan Games Studio. All rights reserved.
       <br><br>
       Official Developer Website:
-      <a href="https://anjaangamesstudio.framer.website/" target="_blank" rel="noopener" style="color:#ffffff;">
+      <a href="https://anjaangamesstudio.framer.website/" target="_blank" rel="noopener">
         anjaangamesstudio.framer.website
       </a>
     </footer>
