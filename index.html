@@ -691,6 +691,30 @@
         inset 0 1px rgba(255, 255, 255, 0.18);
     }
 
+    /* Featured 3D Showcase */
+    .featured-grid { grid-template-columns: 1fr; gap: 34px; }
+    .featured-card { padding: 0; overflow: hidden; border-radius: 30px; }
+    .featured-shell { display:grid; grid-template-columns: 0.82fr 1.18fr; min-height: 520px; }
+    .featured-info { padding: 34px; display:flex; flex-direction:column; justify-content:center; background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(5,5,9,.9)); }
+    .featured-top { align-items:center; }
+    .featured-icon { width:104px; height:104px; border-radius:25px; }
+    .featured-meta h3 { font-size:32px; }
+    .featured-kicker { color:#a78bfa; font-size:11px; font-weight:900; letter-spacing:1.4px; text-transform:uppercase; margin-bottom:14px; }
+    .featured-gallery { position:relative; min-width:0; background:#020205; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .slider { position:relative; width:100%; height:100%; min-height:520px; overflow:hidden; }
+    .slider-track { display:flex; height:100%; transition:transform .55s cubic-bezier(.22,.61,.36,1); }
+    .slide { min-width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at center,rgba(59,130,246,.12),transparent 58%),#050509; }
+    .slide img { width:100%; height:100%; max-height:620px; object-fit:contain; }
+    .slider-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:4; width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,.18); background:rgba(5,5,9,.72); color:#fff; font-size:25px; cursor:pointer; backdrop-filter:blur(12px); }
+    .slider-arrow:hover { background:rgba(139,92,246,.72); }
+    .slider-prev { left:14px; } .slider-next { right:14px; }
+    .slider-dots { position:absolute; z-index:4; left:50%; bottom:16px; transform:translateX(-50%); display:flex; gap:7px; padding:8px 10px; border-radius:999px; background:rgba(0,0,0,.45); backdrop-filter:blur(10px); }
+    .slider-dot { width:7px; height:7px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,.35); cursor:pointer; }
+    .slider-dot.active { width:22px; border-radius:8px; background:#fff; }
+    .slide-count { position:absolute; right:16px; top:16px; z-index:4; padding:7px 10px; border-radius:999px; font-size:11px; font-weight:800; background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.12); }
+    @media(max-width:900px){ .featured-shell{grid-template-columns:1fr}.featured-gallery{order:-1}.slider{min-height:440px}.featured-info{padding:26px} }
+    @media(max-width:560px){ .slider{min-height:390px}.featured-meta h3{font-size:25px}.featured-icon{width:82px;height:82px}.slider-arrow{width:42px;height:42px} }
+
     /* Games Grid */
 
     .games-grid {
@@ -786,6 +810,12 @@
       width: 100%;
       margin-top: auto;
     }
+
+    .category-block { margin-top: 34px; }
+    .category-block + .category-block { margin-top: 48px; }
+    .category-title { margin-bottom: 16px; }
+    .category-title span { color: #a78bfa; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+    .category-title h3 { margin: 5px 0 0; font-size: 24px; }
 
     /* About */
 
@@ -1082,8 +1112,8 @@
       <div class="stats">
 
         <div class="stat">
-          <strong>10</strong>
-          <span>Live Apps</span>
+          <strong>12</strong>
+          <span>Published Apps</span>
         </div>
 
         <div class="stat">
@@ -1132,501 +1162,108 @@
     </section>
 
     <!-- Featured Games -->
-
     <section id="featured">
-
       <div class="section-header">
-
-        <div class="section-heading-group">
-          <span>Spotlight</span>
-          <h2>Featured Games</h2>
-        </div>
-
-        <p>
-          Selected releases showcasing strategy, quick entertainment,
-          and replayable gameplay.
-        </p>
-
+        <div class="section-heading-group"><span>3D Spotlight</span><h2>Featured Games</h2></div>
+        <p>Our flagship 3D releases, shown with real in-game screenshots.</p>
       </div>
-
       <div class="featured-grid">
-
-        <!-- Arcade -->
-
         <article class="featured-card">
-
-          <div class="featured-top">
-
-            <div class="featured-icon">
-              <img
-                src="assets/arcade.png"
-                alt="Anjaan Games Arcade"
-              />
+          <div class="featured-shell">
+            <div class="featured-info">
+              <div class="featured-kicker">Open-City 3D Adventure</div>
+              <div class="featured-top"><div class="featured-icon"><img src="assets/quest-logo.png" alt="Quest Run City Escape logo" /></div><div class="featured-meta"><h3>Quest Run: City Escape</h3><span>Explore • Collect • Escape</span></div></div>
+              <p class="featured-description">Explore a living 3D city, find objectives, collect coins and power-ups, manage energy, unlock ranks, and master multiple running modes.</p>
+              <ul class="feature-list"><li>Third-person open-city exploration</li><li>Explorer, Auto Run & Traffic Run modes</li><li>Ranks, achievements, stats & Game Center</li></ul>
+              <div class="featured-actions"><a class="download-button" href="https://apps.apple.com/us/developer/amit-kandial/id1858479815" target="_blank" rel="noopener noreferrer">View on App Store</a></div>
             </div>
-
-            <div class="featured-meta">
-              <h3>Anjaan Games Arcade</h3>
-              <span>Multi-game arcade collection</span>
-            </div>
-
+            <div class="featured-gallery"><div class="slider" data-slider><div class="slider-track"><div class="slide"><img src="assets/quest-1.png" alt="Gameplay screenshot 1" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-2.png" alt="Gameplay screenshot 2" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-3.png" alt="Gameplay screenshot 3" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-4.png" alt="Gameplay screenshot 4" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-5.png" alt="Gameplay screenshot 5" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-6.png" alt="Gameplay screenshot 6" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-7.png" alt="Gameplay screenshot 7" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-8.png" alt="Gameplay screenshot 8" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-9.png" alt="Gameplay screenshot 9" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-10.png" alt="Gameplay screenshot 10" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-11.png" alt="Gameplay screenshot 11" loading="lazy" /></div>
+<div class="slide"><img src="assets/quest-12.png" alt="Gameplay screenshot 12" loading="lazy" /></div></div><button class="slider-arrow slider-prev" type="button" aria-label="Previous screenshot">‹</button><button class="slider-arrow slider-next" type="button" aria-label="Next screenshot">›</button><div class="slide-count">1 / 12</div><div class="slider-dots"><button class="slider-dot active" type="button" aria-label="Go to screenshot 1"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 2"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 3"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 4"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 5"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 6"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 7"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 8"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 9"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 10"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 11"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 12"></button></div></div></div>
           </div>
-
-          <p class="featured-description">
-            A collection of fast, family-friendly mini-games packed into one
-            polished arcade experience. Play quick games anytime without
-            switching between multiple apps.
-          </p>
-
-          <ul class="feature-list">
-            <li>Includes Chidiya Udh, Raja Mantri, and Find Ball</li>
-            <li>Built-in dice, toss, and quick-play utilities</li>
-            <li>Designed for casual, party, and family gameplay</li>
-          </ul>
-
-          <div class="featured-actions">
-            <a
-              class="download-button"
-              href="https://apps.apple.com/us/app/anjaan-games-arcade/id6759535024"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download on App Store
-            </a>
-          </div>
-
         </article>
-
-        <!-- Magnet Duel -->
-
         <article class="featured-card">
-
-          <div class="featured-top">
-
-            <div class="featured-icon">
-              <img
-                src="assets/magnetduel.png"
-                alt="Magnet Duel"
-              />
+          <div class="featured-shell">
+            <div class="featured-info">
+              <div class="featured-kicker">3D Puzzle Experience</div>
+              <div class="featured-top"><div class="featured-icon"><img src="assets/cubiq-logo.png" alt="Cubiq 3D logo" /></div><div class="featured-meta"><h3>Cubiq 3D</h3><span>Think • Move • Solve</span></div></div>
+              <p class="featured-description">A polished spatial puzzle experience with multiple modes, visual themes, and evolving challenges built around precise cube movement.</p>
+              <ul class="feature-list"><li>Multiple puzzle modes</li><li>3D and top-view experiences</li><li>Theme selection and evolving level challenges</li></ul>
+              <div class="featured-actions"><a class="download-button" href="https://apps.apple.com/us/developer/amit-kandial/id1858479815" target="_blank" rel="noopener noreferrer">View on App Store</a></div>
             </div>
-
-            <div class="featured-meta">
-              <h3>Magnet Duel</h3>
-              <span>Physics strategy board game</span>
-            </div>
-
+            <div class="featured-gallery"><div class="slider" data-slider><div class="slider-track"><div class="slide"><img src="assets/cubiq-1.png" alt="Gameplay screenshot 1" loading="lazy" /></div>
+<div class="slide"><img src="assets/cubiq-2.png" alt="Gameplay screenshot 2" loading="lazy" /></div>
+<div class="slide"><img src="assets/cubiq-3.png" alt="Gameplay screenshot 3" loading="lazy" /></div>
+<div class="slide"><img src="assets/cubiq-4.png" alt="Gameplay screenshot 4" loading="lazy" /></div>
+<div class="slide"><img src="assets/cubiq-5.png" alt="Gameplay screenshot 5" loading="lazy" /></div>
+<div class="slide"><img src="assets/cubiq-6.png" alt="Gameplay screenshot 6" loading="lazy" /></div>
+<div class="slide"><img src="assets/cubiq-7.png" alt="Gameplay screenshot 7" loading="lazy" /></div>
+<div class="slide"><img src="assets/cubiq-8.png" alt="Gameplay screenshot 8" loading="lazy" /></div>
+<div class="slide"><img src="assets/cubiq-9.png" alt="Gameplay screenshot 9" loading="lazy" /></div></div><button class="slider-arrow slider-prev" type="button" aria-label="Previous screenshot">‹</button><button class="slider-arrow slider-next" type="button" aria-label="Next screenshot">›</button><div class="slide-count">1 / 9</div><div class="slider-dots"><button class="slider-dot active" type="button" aria-label="Go to screenshot 1"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 2"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 3"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 4"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 5"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 6"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 7"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 8"></button>
+<button class="slider-dot" type="button" aria-label="Go to screenshot 9"></button></div></div></div>
           </div>
-
-          <p class="featured-description">
-            A tense physics-based strategy game where every magnetic piece
-            affects the board. Think carefully, control chain reactions, and
-            outplay your opponent.
-          </p>
-
-          <ul class="feature-list">
-            <li>Physics-driven magnetic interactions</li>
-            <li>Strategic and competitive board gameplay</li>
-            <li>Simple rules with unpredictable outcomes</li>
-          </ul>
-
-          <div class="featured-actions">
-            <a
-              class="download-button"
-              href="https://apps.apple.com/us/app/magnet-duel/id6761226073"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download on App Store
-            </a>
-          </div>
-
         </article>
-
       </div>
-
     </section>
 
     <!-- All Games -->
-
     <section id="games">
-
       <div class="section-header">
-
-        <div class="section-heading-group">
-          <span>Portfolio</span>
-          <h2>All Apps</h2>
-        </div>
-
-        <p>
-          A growing collection of puzzle, strategy, arcade, educational,
-          and utility apps.
-        </p>
-
+        <div class="section-heading-group"><span>Portfolio</span><h2>Browse by Category</h2></div>
+        <p>Every non-featured release is grouped by genre and represented by its app icon.</p>
       </div>
 
-      <div class="games-grid">
-
-        <!-- Sum Reserve -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/sumreserve.png"
-                alt="Sum Reserve"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>Sum Reserve</h3>
-              <span>Number Puzzle</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            Build the correct total using available numbers, plan each move,
-            and complete challenging number-based puzzle rounds.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/sum-reserve/id6779816199"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-        <!-- Anjora -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/anjora.png"
-                alt="Anjora"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>Anjora</h3>
-              <span>Brain Training</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            A colorful brain-training and learning experience featuring
-            English, Hindi, Punjabi, numbers, colors, shapes, and fun puzzles.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/id6757015003"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-        <!-- Anjaan Games Arcade -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/arcade.png"
-                alt="Anjaan Games Arcade"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>Anjaan Games Arcade</h3>
-              <span>Mini Games</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            Multiple family-friendly games and quick-play utilities combined
-            inside one convenient arcade app.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/anjaan-games-arcade/id6759535024"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-        <!-- Tic Tac Toe -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/tictactoe.png"
-                alt="Tic Tac Toe Glow Grid"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>Tic Tac Toe Glow Grid</h3>
-              <span>Classic Strategy</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            Classic Tic Tac Toe gameplay with multiple board sizes,
-            modern glowing visuals, and flexible game options.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/tic-tac-toe-glow-grid/id6756093765"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-        <!-- Tile Royale -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/tileroyale.png"
-                alt="Tile Royale"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>Tile Royale</h3>
-              <span>Board Strategy</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            A turn-based board game where strategic number choices and
-            careful movement can change the outcome of every match.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/tile-royale/id6758527056"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-        <!-- Reflex Drop -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/reflexdrop.png"
-                alt="Reflex Drop"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>Reflex Drop</h3>
-              <span>Arcade Reflex</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            Test your focus and reaction speed in a fast arcade challenge
-            built around quick movement and precise timing.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/reflex-drop/id6758880543"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-        <!-- Spiral Clash -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/spiralclash.png"
-                alt="Spiral Clash"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>Spiral Clash</h3>
-              <span>Dice Strategy</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            Race through a spiral board, use strategic movement, and compete
-            in a modern dice-based multiplayer experience.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/spiral-clash/id6759514823"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-        <!-- Numerix Calculator -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/numerix.png"
-                alt="Numerix Calculator"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>Numerix Calculator</h3>
-              <span>Utility</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            A clean, stylish, and easy-to-use calculator designed for quick
-            everyday calculations and a smooth mobile experience.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/numerix-calculator/id6759518271"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-        <!-- PathLock Escape -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/pathlock.png"
-                alt="PathLock Escape"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>PathLock Escape</h3>
-              <span>Logic Puzzle</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            Build the correct path before time runs out in a focused logic
-            puzzle filled with procedural challenges.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/pathlock-escape/id6759783064"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-        <!-- Magnet Duel -->
-
-        <article class="game-card">
-
-          <div class="game-card-top">
-
-            <div class="game-icon">
-              <img
-                src="assets/magnetduel.png"
-                alt="Magnet Duel"
-              />
-            </div>
-
-            <div class="game-title-wrap">
-              <h3>Magnet Duel</h3>
-              <span>Physics Strategy</span>
-            </div>
-
-          </div>
-
-          <p class="game-description">
-            Place magnetic pieces carefully, avoid dangerous chain reactions,
-            and control the board through physics and strategy.
-          </p>
-
-          <a
-            class="download-button"
-            href="https://apps.apple.com/us/app/magnet-duel/id6761226073"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-
-        </article>
-
-      </div>
-
+      <div class="category-block"><div class="category-title"><span>Strategy</span><h3>Strategy Games</h3></div><div class="games-grid">
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/magnetduel.png" alt="Magnet Duel"></div><div class="game-title-wrap"><h3>Magnet Duel</h3><span>Strategy</span></div></div><p class="game-description">Physics-driven magnetic strategy where careful placement can trigger unpredictable chain reactions.</p><a class="download-button" href="https://apps.apple.com/us/app/magnet-duel/id6761226073" target="_blank" rel="noopener noreferrer">Download</a></article>
+      </div></div>
+
+      <div class="category-block"><div class="category-title"><span>Puzzle</span><h3>Puzzle Games</h3></div><div class="games-grid">
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/pathlock.png" alt="PathLock Escape"></div><div class="game-title-wrap"><h3>PathLock Escape</h3><span>Puzzle</span></div></div><p class="game-description">Build the correct path before time runs out in focused logic challenges.</p><a class="download-button" href="https://apps.apple.com/us/app/pathlock-escape/id6759783064" target="_blank" rel="noopener noreferrer">Download</a></article>
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/anjora.png" alt="Anjora"></div><div class="game-title-wrap"><h3>Anjora</h3><span>Puzzle</span></div></div><p class="game-description">A colorful puzzle and learning experience with languages, numbers, colors and shapes.</p><a class="download-button" href="https://apps.apple.com/us/app/id6757015003" target="_blank" rel="noopener noreferrer">Download</a></article>
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/sumreserve.png" alt="Sum Reserve"></div><div class="game-title-wrap"><h3>Sum Reserve</h3><span>Puzzle</span></div></div><p class="game-description">Build the correct total using available numbers and plan each move carefully.</p><a class="download-button" href="https://apps.apple.com/us/app/sum-reserve/id6779816199" target="_blank" rel="noopener noreferrer">Download</a></article>
+      </div></div>
+
+      <div class="category-block"><div class="category-title"><span>Board</span><h3>Board Games</h3></div><div class="games-grid">
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/spiralclash.png" alt="Spiral Clash"></div><div class="game-title-wrap"><h3>Spiral Clash</h3><span>Board</span></div></div><p class="game-description">A modern dice-based board experience built around movement and competition.</p><a class="download-button" href="https://apps.apple.com/us/app/spiral-clash/id6759514823" target="_blank" rel="noopener noreferrer">Download</a></article>
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/tileroyale.png" alt="Tile Royale"></div><div class="game-title-wrap"><h3>Tile Royale</h3><span>Board</span></div></div><p class="game-description">Turn-based board gameplay with strategic number choices and movement.</p><a class="download-button" href="https://apps.apple.com/us/app/tile-royale/id6758527056" target="_blank" rel="noopener noreferrer">Download</a></article>
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/tictactoe.png" alt="Tic Tac Toe Glow Grid"></div><div class="game-title-wrap"><h3>Tic Tac Toe Glow Grid</h3><span>Board</span></div></div><p class="game-description">Classic Tic Tac Toe with multiple board sizes and modern glowing visuals.</p><a class="download-button" href="https://apps.apple.com/us/app/tic-tac-toe-glow-grid/id6756093765" target="_blank" rel="noopener noreferrer">Download</a></article>
+      </div></div>
+
+      <div class="category-block"><div class="category-title"><span>Casual</span><h3>Casual Games</h3></div><div class="games-grid">
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/arcade.png" alt="Anjaan Games Arcade"></div><div class="game-title-wrap"><h3>Anjaan Games Arcade</h3><span>Casual</span></div></div><p class="game-description">A collection of family-friendly mini-games and quick-play activities in one app.</p><a class="download-button" href="https://apps.apple.com/us/app/anjaan-games-arcade/id6759535024" target="_blank" rel="noopener noreferrer">Download</a></article>
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/reflexdrop.png" alt="Reflex Drop"></div><div class="game-title-wrap"><h3>Reflex Drop</h3><span>Casual</span></div></div><p class="game-description">A quick reaction challenge focused on timing, movement and precision.</p><a class="download-button" href="https://apps.apple.com/us/app/reflex-drop/id6758880543" target="_blank" rel="noopener noreferrer">Download</a></article>
+      </div></div>
+
+      <div class="category-block"><div class="category-title"><span>Utilities</span><h3>Utilities</h3></div><div class="games-grid">
+        <article class="game-card"><div class="game-card-top"><div class="game-icon"><img src="assets/numerix.png" alt="Numerix Calculator"></div><div class="game-title-wrap"><h3>Numerix Calculator</h3><span>Utilities</span></div></div><p class="game-description">A clean, stylish calculator designed for quick everyday calculations.</p><a class="download-button" href="https://apps.apple.com/us/app/numerix-calculator/id6759518271" target="_blank" rel="noopener noreferrer">Download</a></article>
+      </div></div>
     </section>
 
     <!-- About -->
@@ -1680,7 +1317,7 @@
 
           <div class="about-point">
             <strong>Growing Portfolio</strong>
-            <span>Ten published apps with more projects in development.</span>
+            <span>Twelve published apps with more projects in development.</span>
           </div>
 
         </div>
@@ -1725,5 +1362,26 @@
 
   </main>
 
+
+  <script>
+    document.querySelectorAll('[data-slider]').forEach((slider) => {
+      const track = slider.querySelector('.slider-track');
+      const slides = [...slider.querySelectorAll('.slide')];
+      const dots = [...slider.querySelectorAll('.slider-dot')];
+      const count = slider.querySelector('.slide-count');
+      let index = 0, startX = 0;
+      const show = (n) => {
+        index = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((d,i)=>d.classList.toggle('active',i===index));
+        count.textContent = `${index+1} / ${slides.length}`;
+      };
+      slider.querySelector('.slider-prev').addEventListener('click',()=>show(index-1));
+      slider.querySelector('.slider-next').addEventListener('click',()=>show(index+1));
+      dots.forEach((d,i)=>d.addEventListener('click',()=>show(i)));
+      slider.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
+      slider.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45)show(index+(dx<0?1:-1));},{passive:true});
+    });
+  </script>
 </body>
 </html>
