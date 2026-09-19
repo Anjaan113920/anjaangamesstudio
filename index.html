@@ -1095,6 +1095,55 @@
     @media(max-width:480px){.games-grid{grid-template-columns:1fr!important}.game-card{min-height:0!important}.hero-description{font-size:14px!important}.featured-meta h3{font-size:27px!important}.slider{min-height:360px!important}}
   </style>
 
+
+  <style>
+    /* FIX: keep featured controls above artwork and make the slider fully clickable */
+    .featured-shell{
+      grid-template-columns:minmax(340px, 40%) minmax(0, 60%) !important;
+      gap:24px !important;
+      align-items:center !important;
+      overflow:visible !important;
+    }
+    .featured-info,
+    .featured-card:nth-child(even) .featured-info{
+      position:relative !important;
+      z-index:5 !important;
+      margin:0 !important;
+      transform:none !important;
+    }
+    .featured-gallery,
+    .featured-card:nth-child(even) .featured-gallery{
+      position:relative !important;
+      z-index:2 !important;
+      transform:none !important;
+      overflow:hidden !important;
+      isolation:isolate;
+    }
+    .slider{position:relative !important; z-index:1 !important; overflow:hidden !important; touch-action:pan-y;}
+    .slider-track{position:relative; z-index:1; will-change:transform;}
+    .slider:after{z-index:2 !important; pointer-events:none !important;}
+    .featured-gallery:before{z-index:3 !important; pointer-events:none !important;}
+    .slider-arrow{z-index:30 !important; pointer-events:auto !important; user-select:none; -webkit-user-select:none;}
+    .slider-dots{z-index:30 !important; pointer-events:auto !important;}
+    .slider-dot{position:relative; z-index:31 !important; pointer-events:auto !important;}
+    .slide-count{z-index:30 !important; pointer-events:none !important;}
+    .featured-icon{position:relative; z-index:1;}
+    .featured-actions{position:relative; z-index:10;}
+    .featured-actions .download-button{position:relative; z-index:11; pointer-events:auto;}
+    .featured-card:nth-child(even) .featured-shell{
+      grid-template-columns:minmax(0, 60%) minmax(340px, 40%) !important;
+    }
+    @media(max-width:1050px){
+      .featured-shell,.featured-card:nth-child(even) .featured-shell{grid-template-columns:1fr !important;gap:0 !important;}
+      .featured-info,.featured-card:nth-child(even) .featured-info{margin:-18px 18px 0 !important;z-index:5 !important;}
+      .featured-gallery,.featured-card:nth-child(even) .featured-gallery{z-index:2 !important;}
+    }
+    @media(max-width:760px){
+      .featured-info,.featured-card:nth-child(even) .featured-info{margin:-10px 8px 0 !important;}
+      .slider-arrow{width:44px !important;height:44px !important;}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -1436,21 +1485,43 @@
   <script>
     document.querySelectorAll('[data-slider]').forEach((slider) => {
       const track = slider.querySelector('.slider-track');
-      const slides = [...slider.querySelectorAll('.slide')];
-      const dots = [...slider.querySelectorAll('.slider-dot')];
+      const slides = Array.from(slider.querySelectorAll('.slide'));
+      const dots = Array.from(slider.querySelectorAll('.slider-dot'));
       const count = slider.querySelector('.slide-count');
-      let index = 0, startX = 0;
-      const show = (n) => {
+      const prev = slider.querySelector('.slider-prev');
+      const next = slider.querySelector('.slider-next');
+      let index = 0;
+      let startX = null;
+
+      function show(n) {
+        if (!slides.length) return;
         index = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${index * 100}%)`;
-        dots.forEach((d,i)=>d.classList.toggle('active',i===index));
-        count.textContent = `${index+1} / ${slides.length}`;
-      };
-      slider.querySelector('.slider-prev').addEventListener('click',()=>show(index-1));
-      slider.querySelector('.slider-next').addEventListener('click',()=>show(index+1));
-      dots.forEach((d,i)=>d.addEventListener('click',()=>show(i)));
-      slider.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
-      slider.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45)show(index+(dx<0?1:-1));},{passive:true});
+        track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        if (count) count.textContent = `${index + 1} / ${slides.length}`;
+      }
+
+      prev?.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation(); show(index - 1);
+      });
+      next?.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation(); show(index + 1);
+      });
+      dots.forEach((dot, i) => dot.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation(); show(i);
+      }));
+
+      slider.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'touch' || e.pointerType === 'pen') startX = e.clientX;
+      });
+      slider.addEventListener('pointerup', (e) => {
+        if (startX === null) return;
+        const dx = e.clientX - startX;
+        startX = null;
+        if (Math.abs(dx) > 45) show(index + (dx < 0 ? 1 : -1));
+      });
+
+      show(0);
     });
   </script>
 </body>
